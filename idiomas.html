@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="estilo.css">
+
+    <title>Quiz de Idiomas del Mundo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .quiz-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        .question {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+        .option {
+            margin-bottom: 10px;
+        }
+        .submit-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="otro-punto">
+        <a href="menu.html"><button class="btn">Menú Principal. </button></a>
+        </div>
+    <div id="punto-especifico">
+        <p>TIMER:</p>
+        <p id="tiempo">20</p>
+    </div>
+    <script src="scrippt.js"></script>
+
+
+    <div class="quiz-container">
+        <h1>Quiz de Idiomas del Mundo</h1>
+        <form id="quiz-form">
+            <div class="question">1. ¿Cuál es el idioma más hablado en el mundo?</div>
+            <ul class="options">
+                <li class="option"><input type="radio" name="question1" value="a"> Mandarín</li>
+                <li class="option"><input type="radio" name="question1" value="b"> Español</li>
+                <li class="option"><input type="radio" name="question1" value="c"> Inglés</li>
+            </ul>
+
+            <div class="question">2. ¿En qué país se habla el idioma ruso de forma predominante?</div>
+            <ul class="options">
+                <li class="option"><input type="radio" name="question2" value="a"> Rusia</li>
+                <li class="option"><input type="radio" name="question2" value="b"> China</li>
+                <li class="option"><input type="radio" name="question2" value="c"> Brasil</li>
+            </ul>
+
+            <div class="question">3. ¿Cuál es el idioma oficial de Japón?</div>
+            <ul class="options">
+                <li class="option"><input type="radio" name="question3" value="a"> Mandarín</li>
+                <li class="option"><input type="radio" name="question3" value="b"> Japonés</li>
+                <li class="option"><input type="radio" name="question3" value="c"> Coreano</li>
+            </ul>
+
+            <div class="question">4. ¿Qué idioma se habla en Australia?</div>
+            <ul class="options">
+                <li class="option"><input type="radio" name="question4" value="a"> Inglés</li>
+                <li class="option"><input type="radio" name="question4" value="b"> Francés</li>
+                <li class="option"><input type="radio" name="question4" value="c"> Alemán</li>
+            </ul>
+
+            <div class="question">5. ¿Cuál es el idioma oficial de Brasil?</div>
+            <ul class="options">
+                <li class="option"><input type="radio" name="question5" value="a"> Inglés</li>
+                <li class="option"><input type="radio" name="question5" value="b"> Español</li>
+                <li class="option"><input type="radio" name="question5" value="c"> Portugués</li>
+            </ul>
+
+            <button type="button" class="submit-button" id="detenerBoton" onclick="checkAnswers()">Enviar respuestas</button>
+        </form>
+        <br>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        function checkAnswers() {
+            const answers = ["a", "a", "b", "a", "c"];
+            const userAnswers = [];
+
+            for (let i = 1; i <= 5; i++) {
+                const selectedOption = document.querySelector(`input[name="question${i}"]:checked`);
+                if (selectedOption) {
+                    userAnswers.push(selectedOption.value);
+                } else {
+                    userAnswers.push(null);
+                }
+            }
+
+            let score = 0;
+            for (let i = 0; i < answers.length; i++) {
+                if (userAnswers[i] === answers[i]) {
+                    score++;
+                }
+            }
+
+            const results = document.getElementById("results");
+            results.innerHTML = `Tienes ${score} respuestas correctas de 5.`;
+        }
+
+        window.onload =  function(){
+        document.getElementById("musica1").play();
+        }
+    </script>
+    <audio id="musica1" loop>
+        <source src="audio/cancion1.mp3" type="audio/mpeg">
+    
+    </audio>
+</body>
+</html>

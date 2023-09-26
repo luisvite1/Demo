@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="estilo.css">
+
+    <title>Quiz de Maravillas del Mundo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .quiz-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ff0000;
+            border-radius: 10px;
+        }
+        .question {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+        .option {
+            margin-bottom: 10px;
+        }
+        .submit-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="otro-punto">
+    <a href="menu.html"><button class="btn">Menú Principal. </button></a>
+    </div>
+    
+    <div id="punto-especifico">
+        <p>TIMER:</p>
+        <p id="tiempo">20</p>
+    </div>
+    <script src="scrippt.js"></script>
+
+    <div class="quiz-container">
+        <h1>Quiz de Maravillas del Mundo</h1>
+        <form id="quiz-form">
+            <div class="question">1. ¿Cuál de las siguientes es una de las Siete Maravillas del Mundo Moderno?</div>
+            <ul class="options">
+                <li class="option"><input type="radio" name="question1" value="a"> La Gran Muralla China</li>
+                <li class="option"><input type="radio" name="question1" value="b"> La Estatua de la Libertad</li>
+                <li class="option"><input type="radio" name="question1" value="c"> La Pirámide de Giza</li>
+            </ul>
+
+            <div class="question">2. ¿En qué país se encuentra el Cristo Redentor?</div>
+            <ul class="options">
+                <li class="option"><input type="radio" name="question2" value="a"> España</li>
+                <li class="option"><input type="radio" name="question2" value="b"> Brasil</li>
+                <li class="option"><input type="radio" name="question2" value="c"> Italia</li>
+            </ul>
+
+            <div class="question">3. ¿Cuál de las Maravillas Antiguas es conocida como "Los Jardines Colgantes"?</div>
+            <ul class="options">
+                <li class="option"><input type="radio" name="question3" value="a"> La Gran Muralla China</li>
+                <li class="option"><input type="radio" name="question3" value="b"> El Faro de Alejandría</li>
+                <li class="option"><input type="radio" name="question3" value="c"> Los Jardines de Babilonia</li>
+            </ul>
+
+            <div class="question">4. ¿Cuál es la única Maravilla del Mundo Antiguo que aún existe en la actualidad?</div>
+            <ul class="options">
+                <li class="option"><input type="radio" name="question4" value="a"> La Gran Muralla China</li>
+                <li class="option"><input type="radio" name="question4" value="b"> El Faro de Alejandría</li>
+                <li class="option"><input type="radio" name="question4" value="c"> La Pirámide de Giza</li>
+            </ul>
+
+            <div class="question">5. ¿Cuál de las siguientes Maravillas Modernas se encuentra en la India?</div>
+            <ul class="options">
+                <li class="option"><input type="radio" name="question5" value="a"> El Coliseo Romano</li>
+                <li class="option"><input type="radio" name="question5" value="b"> El Taj Mahal</li>
+                <li class="option"><input type="radio" name="question5" value="c"> La Muralla de Adriano</li>
+            </ul>
+
+            <button type="button" class="submit-button" id="detenerBoton" onclick="checkAnswers()">Enviar respuestas</button>
+        </form>
+        <div id="results"></div>
+    </div>
+ 
+   
+    <script>
+        
+        function checkAnswers() {
+            const answers = ["b", "b", "c", "c", "b"];
+            const userAnswers = [];
+
+            for (let i = 1; i <= 5; i++) {
+                const selectedOption = document.querySelector(`input[name="question${i}"]:checked`);
+                if (selectedOption) {
+                    userAnswers.push(selectedOption.value);
+                } else {
+                    userAnswers.push(null);
+                }
+            }
+
+            let score = 0;
+            for (let i = 0; i < answers.length; i++) {
+                if (userAnswers[i] === answers[i]) {
+                    score++;
+                }
+            }
+
+            const results = document.getElementById("results");
+            results.innerHTML = `Tienes ${score} respuestas correctas de 5.`;
+        }
+
+        window.onload =  function(){
+        document.getElementById("musica1").play();
+        }
+
+
+
+
+        
+    </script>
+
+    
+<audio id="musica1" loop>
+    <source src="audio/cancion1.mp3" type="audio/mpeg">
+
+</audio>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="estilo.css">
+
+    <title>Quiz de programación</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .quiz-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        .question {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+        .option {
+            margin-bottom: 10px;
+        }
+        .submit-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+       
+
+    </style>
+</head>
+<body>
+
+    
+    <div id="otro-punto">
+        <a href="menu.html"><button class="btn">Menú Principal. </button></a>
+        </div>
+    
+      
+    <div id="punto-especifico">
+        <p>TIMER:</p>
+        <p id="tiempo">20</p>
+    </div>
+    <script src="scrippt.js"></script>
+
+
+
+    <div class="quiz-container">
+        <h1>Programación</h1>
+        <form id="quiz-form">
+            <div class="question">1. ¿Cuál es el lenguaje de marcado utilizado para crear páginas web?</div>
+            <ul class="options">
+                <li class="option"><input type="radio" name="question1" value="a"> HTML</li>
+                <li class="option"><input type="radio" name="question1" value="b"> CSS</li>
+                <li class="option"><input type="radio" name="question1" value="c"> JavaScript</li>
+            </ul>
+
+            <div class="question">2. ¿Qué lenguaje se utiliza para dar estilo a una página web?</div>
+            <ul class="options">
+                <li class="option"><input type="radio" name="question2" value="a"> HTML</li>
+                <li class="option"><input type="radio" name="question2" value="b"> CSS</li>
+                <li class="option"><input type="radio" name="question2" value="c"> JavaScript</li>
+            </ul>
+
+            <div class="question">3. ¿Cuál de las siguientes opciones es un lenguaje de programación?</div>
+            <ul class="options">
+                <li class="option"><input type="radio" name="question3" value="a"> HTML</li>
+                <li class="option"><input type="radio" name="question3" value="b"> CSS</li>
+                <li class="option"><input type="radio" name="question3" value="c"> JavaScript</li>
+            </ul>
+
+            <div class="question">4. ¿Cómo se declara una variable en JavaScript?</div>
+            <ul class="options">
+                <li class="option"><input type="radio" name="question4" value="a"> var myVar;</li>
+                <li class="option"><input type="radio" name="question4" value="b"> variable myVar;</li>
+                <li class="option"><input type="radio" name="question4" value="c"> let myVar = 5;</li>
+            </ul>
+
+            <div class="question">5. ¿Qué propiedad se utiliza para cambiar el color de fondo de un elemento HTML?</div>
+            <ul class="options">
+                <li class="option"><input type="radio" name="question5" value="a"> background-color</li>
+                <li class="option"><input type="radio" name="question5" value="b"> color</li>
+                <li class="option"><input type="radio" name="question5" value="c"> font-size</li>
+            </ul>
+
+            <button type="button" class="submit-button" id="detenerBoton" onclick="checkAnswers()">Enviar respuestas</button>
+        </form>
+        <br>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        function checkAnswers() {
+            const answers = ["a", "b", "c", "a", "a"];
+            const userAnswers = [];
+
+            for (let i = 1; i <= 5; i++) {
+                const selectedOption = document.querySelector(`input[name="question${i}"]:checked`);
+                if (selectedOption) {
+                    userAnswers.push(selectedOption.value);
+                } else {
+                    userAnswers.push(null);
+                }
+            }
+
+            let score = 0;
+            for (let i = 0; i < answers.length; i++) {
+                if (userAnswers[i] === answers[i]) {
+                    score++;
+                }
+            }
+
+            const results = document.getElementById("results");
+            results.innerHTML = `Tienes ${score} respuestas correctas de 5.`;
+        }
+
+       window.onload =  function(){
+        document.getElementById("musica1").play();
+        }
+    </script>
+
+    <audio id="musica1" loop>
+        <source src="audio/cancion1.mp3" type="audio/mpeg">
+    
+    </audio>
+</body>
+</html>
